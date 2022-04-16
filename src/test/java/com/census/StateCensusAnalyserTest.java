@@ -11,11 +11,22 @@ public class StateCensusAnalyserTest {
     public static final String WRONG_FILE = "/useless.txt";
 
     @Test
-    public void GivenTheStateCodesCsvFile_IfHasCorrectNumberOfRecords_ShouldReturnTrue() throws IOException {
+    public void GivenTheStateCensusCsvFile_IfHasCorrectNumberOfRecords_ShouldReturnTrue() throws IOException {
         try {
             int count = StateCensusAnalyser.openCsvBuilder(STATE_CENSUS_CSV_PATH, StateCensus.class);
 //            System.out.println(count);
             Assert.assertEquals(29, count);
+        } catch (CensusAnalyserException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void GivenTheStateCodeCsvFile_IfHasCorrectNumberOfRecords_ShouldReturnTrue() throws IOException {
+        try {
+            int count = StateCensusAnalyser.openCsvBuilder(STATE_CODE_CSV_PATH, StateCode.class);
+//            System.out.println(count);
+            Assert.assertEquals(37, count);
         } catch (CensusAnalyserException e) {
             e.printStackTrace();
         }
